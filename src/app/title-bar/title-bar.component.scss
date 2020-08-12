@@ -1,0 +1,19 @@
+
+
+*{
+	font-family: Inter;
+    font-weight: bold;
+}
+
+.app-title-bar {
+  margin: 0;
+  height: 5rem;
+  width: 100%;
+  background-image: linear-gradient(to right, #000000 , #B933E1, #00B3F5, #00B3F5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1em;
+  border-color: #707070;
+  font-size: 2rem;
+}

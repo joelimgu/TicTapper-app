@@ -1,0 +1,41 @@
+
+.container1 {
+  width: auto;
+  background-image: linear-gradient(to top right, #00B3F5 , #B933E1);
+  min-height: 25rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  line-height: 1.5rem;
+  animation-name: enter;
+  animation-duration: 2s;
+  transition: 0.3s;
+}
+.container1:hover {transform: scale(1.05);}
+
+.container1 h3 {
+  padding-left: 0.5rem;
+}
+.statsList{
+  display: flex;
+}
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%
+}
+
+
+.whiteLineForJobStatList {
+  width: 0.5rem;
+  flex-grow: 1;
+}
+
+
+.whiteLineForJobStatList rect{
+  width: 0.1rem;
+  height: 20rem;
+  fill: #ffffff;
+  flex-grow: 1;
+}

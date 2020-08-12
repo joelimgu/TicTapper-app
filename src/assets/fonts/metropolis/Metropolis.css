@@ -1,0 +1,12 @@
+
+
+@font-face {
+  font-family: Metropolis;
+  src: url('Metropolis-Regular.otf');
+}
+
+@font-face {
+  font-family: Metropolis;
+  font-weight: lighter;
+  src: url('Metropolis-Light.otf');
+}

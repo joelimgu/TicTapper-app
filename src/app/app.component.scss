@@ -1,0 +1,29 @@
+
+body {
+   margin: 0px;
+   width: 100%;
+   min-height: 100vh;
+   background-color: #E6DFFF;
+ }
+
+.column1 {
+  flex-grow: 1;
+  margin: 2rem;
+  margin-right: 0;
+  max-width: 20rem;
+}
+
+.column2 {
+  flex-grow: 3;
+  margin: 2rem;
+}
+
+.row {
+  display: flex;
+  flex-grow: 1;
+}
+
+@keyframes enter {
+  0% {opacity: 0;}
+  100%{opacity: 100%}
+}

@@ -1,0 +1,41 @@
+<div class="container1">
+  <div class="column1">
+      <h3>Estat de la màquina:</h3>
+      <div class="NFC">
+        <svg class="NFCStatusrectangle">
+          <rect/>
+        </svg>
+        <img src="../../../assets/images/nfc.svg" alt="NFC">
+      </div>
+      <div class="db">
+        <svg class="DBStatusrectangle">
+          <rect/>
+        </svg>
+        <img src="../../../assets/images/database.svg" alt="DB">
+
+      </div>
+      <div class="dbInput">
+        <p>Base de Dades: </p>
+        <input class="textInput" id="database" value="Tests_Joel" (change)="updateDb($event)">
+      </div>
+      <div class="spacer1">
+
+      </div>
+      <p>Treballant en : {{jobName}}</p>
+
+  </div>
+
+  <div class="column2">
+    <div class="machineComments">
+      <h2>{{status}}</h2>
+    </div>
+    <h2 class="porces">Procés: {{qtyDone}} / {{processSize}}</h2>
+    <p>{{timeToProcessATag}}</p>
+    <div class="spacer2">
+    </div>
+    <div class="lastline">
+      <div class="spacer3"></div>
+    <button class="addJobBTN" (click)="goToCreateNewJob()">Afegir una tasca</button>
+    </div>
+  </div>
+</div>

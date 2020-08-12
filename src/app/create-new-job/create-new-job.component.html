@@ -1,0 +1,19 @@
+<div class="container1">
+    <h3>Feina  fer:</h3>
+    <div class="statsList">
+      <svg class="whiteLineForJobStatList">
+        <rect/>
+      </svg>
+      <ul class="list">
+        <li>Nom : <input class="textInput" id="name" (change)="setName($event)"></li>
+        <li>Ref : <input class="textInput" id="Ref" (change)="setRef($event)"></li>
+        <li>URL : <input class="textInput" id="URL" (change)="setURL($event)"></li>
+        <li>Quantitat : <input class="textInput" id="Quantitat" pattern="[0-999999]" (change)="setQty($event)"></li>
+        <li>QT Fetes : <input class="textInput" id="qtyDone" pattern="[0-999999{6}]"(change)="setQtDone($event)"></li>
+        <li>Romejar : <input class="textInput" id="rom"  pattern="[0-1{1}]" (change)="setRom($event)"></li>
+        <li>Estat : <input class="textInput" id="status" (change)="setStatus($event)"></li>
+      </ul>
+    </div>
+    <button class="saveJobBTN" type="button" (click)="addNewJob()">Guardar</button>
+    <button class="saveJobBTN" (click)="goToHomePage()">Descartar</button>
+</div>
