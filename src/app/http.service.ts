@@ -70,4 +70,20 @@ export class HttpService {
     });
     return result;
   }
+
+  getLastEditedJob(){
+    console.log("serahcing for last edited job");
+
+    let result = new Promise((resolve, reject) => {
+      try {
+        this.http.get<any>(this.apiURl + '/api/getLastEditedJob').subscribe((msg: any) =>{
+          resolve(msg.lastJob)
+      })
+      } catch (error) {
+        console.log(error);
+        reject(error)
+      }
+    });
+    return result;
+  }
 }

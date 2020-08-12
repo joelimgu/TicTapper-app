@@ -27,7 +27,7 @@ export class InfoPanelComponent implements OnInit {
     while (true) {
       await this._delay(300);
       let status = "Disconnected"
-      let currentJob = {qtyDone: 0, qty: 0, name: "NA"}
+      let currentJob = {qtydone: 0, qty: 0, name: "NA"}
       let finishedTime = 0;
       try {
         status = await this._http.getStatus();
@@ -56,7 +56,6 @@ export class InfoPanelComponent implements OnInit {
     if (this.status != "Looking for a Job") alert("La base de dades serà actualitzada una vegada la feina actual hagi finalitzat")
     this._http.updateDB(event.target.value);
   }
-
 
   goToCreateNewJob(){
     this._router.navigate(['CreateNewJob'])
