@@ -2,13 +2,13 @@
   <div class="column1">
       <h3>Estat de la màquina:</h3>
       <div class="NFC">
-        <svg class="NFCStatusrectangle">
+        <svg class="NFCStatusrectangle" [ngStyle]="{'fill' : isNFCConnected ? '#189120' : '#C50143'}">
           <rect/>
         </svg>
         <img src="../../../assets/images/nfc.svg" alt="NFC">
       </div>
       <div class="db">
-        <svg class="DBStatusrectangle">
+        <svg class="DBStatusrectangle" [ngStyle]="{'fill' : isDBConnected ? '#189120' : '#C50143'}">
           <rect/>
         </svg>
         <img src="../../../assets/images/database.svg" alt="DB">
@@ -30,7 +30,7 @@
       <h2>{{status}}</h2>
     </div>
     <h2 class="porces">Procés: {{qtyDone}} / {{processSize}}</h2>
-    <p>{{timeToProcessATag}}</p>
+    <p>{{msgTimeToProcessATag}}</p>
     <div class="spacer2">
     </div>
     <div class="lastline">

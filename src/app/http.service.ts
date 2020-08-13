@@ -30,13 +30,6 @@ export class HttpService {
     return this.http.post<any>(this.apiURl + '/api/addNewJob', {newJob: newJob}).subscribe((msg: any) =>{})
   }
 
-  getJob(){
-    /*let result = new Promise((resolve, reject) => {
-      this.http.get<any>(this.apiURl + '/api/status').subscribe((msg: any) =>{
-        resolve(msg.currentJob)
-    })});*/
-    return "result";
-  }
 
   updateDB(newDB){
     console.log("setting db to : " + newDB);
@@ -77,7 +70,36 @@ export class HttpService {
     let result = new Promise((resolve, reject) => {
       try {
         this.http.get<any>(this.apiURl + '/api/getLastEditedJob').subscribe((msg: any) =>{
-          resolve(msg.lastJob)
+          console.log(msg.lastJob[0]);
+          resolve(msg.lastJob[0])
+      })
+      } catch (error) {
+        console.log(error);
+        reject(error)
+      }
+    });
+    return result;
+  }
+
+  getNFCInfo(){
+    let result = new Promise((resolve, reject) => {
+      try {
+        this.http.get<any>(this.apiURl + '/api/machine').subscribe((msg: any) =>{
+          resolve(msg.arduinoConnected)
+      })
+      } catch (error) {
+        console.log(error);
+        reject(error)
+      }
+    });
+    return result;
+  }
+
+  getDBInfo(){
+    let result = new Promise((resolve, reject) => {
+      try {
+        this.http.get<any>(this.apiURl + '/api/machine').subscribe((msg: any) =>{
+          resolve(msg.databaseConnected)
       })
       } catch (error) {
         console.log(error);

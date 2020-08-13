@@ -17,46 +17,59 @@ export class InfoPanelComponent implements OnInit {
   processSize = 0;
   jobName = "NA"
   msgTimeToProcessATag = "";
+  isNFCConnected = false
+  isDBConnected = false
   async ngOnInit() {
-  //  let a = await this._http.getStatus();
-  //  console.log("h: " + a);
+
   this._updateStatus();
   }
 
-  async _updateStatus(){
-    while (true) {
+  async _updateStatus(){ //updates all the info of the main pannel
+    while (true) {//creates a while of delay 0.3s
       await this._delay(300);
-      let status = "Disconnected"
-      let currentJob = {qtydone: 0, qty: 0, name: "NA"}
-      let finishedTime = 0;
-      try {
-        status = await this._http.getStatus();
-        currentJob = await this._http.getcurrentJob();
-        finishedTime = await this._http.getSpeed();
-      } catch (error) {
-        console.log("can't connect to http server, error : " + error);
-      }
-      this._displayTagTime(finishedTime)
-      this.status = status
-      this.qtyDone = currentJob.qtydone + 1
-      this.processSize = currentJob.qty
-      this.jobName = currentJob.name
+
+      //updates the status info
+      this._http.getStatus().then((status) =>{ this.status = status; }).catch((err) => {console.log(err);} )
+
+      //updates the speed line if it makes sense to do so
+      this._http.getSpeed().then((finishedTime) =>{
+        if(this.status != "Looking for a Job") this._displayTagTime(finishedTime)
+        else this.msgTimeToProcessATag = "╰(*°▽°*)╯"
+      }).catch((err) => { console.log(err); })
+
+      //updates the rectangle color to info the user about the connections status
+      this._http.getNFCInfo().then((connection) => {this.isNFCConnected = connection}).catch((err) => {console.log(err) })
+      this._http.getNFCInfo().then((connection) => {this.isDBConnected = connection}).catch((err) => {console.log(err) })
+
+      //takes care of the job info in the main panel
+      this._http.getcurrentJob().then((currentJob) =>{
+        if (currentJob){
+          this.qtyDone = Math.min(currentJob.qtydone + 1, this.processSize);
+          this.processSize = currentJob.qty
+          this.jobName = currentJob.name
+        }
+      }).catch((err) => {console.log(err);})
+
     }
   }
 
+  //creates the msg for the speed info
   _displayTagTime(time){
-    this.timeToProcessATag = "S'ha tardat " + time/1000 +"s en escriure una etiqueta, acabant la tasca en " +  ((time*(this.processSize - this.qtyDone))/1000) + "s";
+    this.msgTimeToProcessATag = "S'ha tardat " + time/1000 +"s en escriure una etiqueta, acabant la tasca en " +  ((time*(this.processSize - this.qtyDone))/1000) + "s";
   }
 
+  //dely funciton
   _delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
+  //method to update the db in use
   updateDb(event){
     if (this.status != "Looking for a Job") alert("La base de dades serà actualitzada una vegada la feina actual hagi finalitzat")
     this._http.updateDB(event.target.value);
   }
 
+  //routes to the page to add a job to the db
   goToCreateNewJob(){
     this._router.navigate(['CreateNewJob'])
   }
