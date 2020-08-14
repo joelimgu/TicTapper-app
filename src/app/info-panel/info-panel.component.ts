@@ -12,13 +12,13 @@ export class InfoPanelComponent implements OnInit {
 
   constructor(private _router: Router, private _http: HttpService) { }
 
-  status = "Disconnected";
-  qtyDone = 0;
-  processSize = 0;
-  jobName = "NA"
-  msgTimeToProcessATag = "";
-  isNFCConnected = false
-  isDBConnected = false
+  status:any = "Disconnected";
+  qtyDone:any = 0;
+  processSize:any = 0;
+  jobName:any = "NA"
+  msgTimeToProcessATag:any = "";
+  isNFCConnected:any = false
+  isDBConnected:any = false
   async ngOnInit() {
 
   this._updateStatus();

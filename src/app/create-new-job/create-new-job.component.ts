@@ -10,7 +10,7 @@ import { IJob } from "../interfaces/JobInterface";
 })
 export class CreateNewJobComponent implements OnInit {
 
-  newJob : IJob = {};
+  newJob : any = {};
 
   constructor(private _router: Router,  private _http: HttpService) { }
 

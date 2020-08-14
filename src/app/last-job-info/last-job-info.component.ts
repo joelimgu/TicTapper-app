@@ -14,27 +14,27 @@ export class LastJobInfoComponent implements OnInit {
     this._updateStatus()
   }
 
-  tittle = "Ùltima feina feta:"
+  tittle:any = "Ùltima feina feta:"
 
-  name = "NA"
-  ref = "NA"
-  url = "NA"
-  qty = "NA"
-  qtyDone = "NA"
-  rom = "NA"
-  status = "NA"
-  modified_at = "NA"
+  name:any = "NA"
+  ref:any = "NA"
+  url:any = "NA"
+  qty:any = "NA"
+  qtyDone:any = "NA"
+  rom:any = "NA"
+  status:any = "NA"
+  modified_at:any = "NA"
 
 //updates the pannel on the left of the screen, it shows the current job or the last one if it's not wirking
   async _updateStatus(){
     while (true) {
-      var job = {}
+      var job:any = {}
       await this._delay(5000);
 
       try {
         job = await this._http.getcurrentJob();
         this.tittle = "Treballant en:"
-        if (job.status == "stop" || !job) {
+        if (job.status == "stop" || !job || this.name == "NA") {
           this.tittle = "Ùltima feina feta:"
           job = await this._http.getLastEditedJob();
         }
