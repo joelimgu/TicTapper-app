@@ -2,7 +2,7 @@
 .container1 {
   width: auto;
   background-image: linear-gradient(to top left, #00B3F5 , #B933E1);
-  min-height: 25rem;
+  min-height: 70vh;
   padding: 1.5rem 2.5rem 1.5rem 2.5rem;
   border-radius: 1rem;
   display: flex;
@@ -16,47 +16,47 @@
 .column1 {
   display: flex;
   flex-direction: column;
-  min-width: 15rem;
+  min-width: 15vw;
 }
 
 .NFC {
  display: flex;
  align-items:flex-start;
- margin-top: 1.5rem;
+ margin-top: 1.5vh;
 }
 
 .NFCStatusrectangle {
-  width: 0.5rem;
-  margin-right: 0.7rem;
+  width: 1vw;
+  margin-right: 0.7vh;
 }
 
 .NFCStatusrectangle rect {
-  height: 7rem;
-  width: 0.3rem;
+  height: 20vh;
+  width: 0.5vw;
   //fill: #C50143 ;// #189120 -> green // #C50143 -> red
 }
 .NFC img{
-  width: 7rem;
+  width: 9vw;
 }
 .db {
   display: flex;
 }
 
 .DBStatusrectangle {
-  width: 0.5rem;
-  margin-right: 0.7rem;
+  width: 1vh;
+  margin-right: 0.7vh;
 }
 
 .DBStatusrectangle rect {
   height: 100%;
-  width: 0.3rem;
+  width: 0.5vw;
   //fill: #C50143;
 }
 .db img {
-  width: 7rem;
+  width: 9vw;
 }
 .spacer1 {
-  height: 100%;
+  height: 1vh;
 }
 
 
@@ -73,7 +73,8 @@
   display: flex;
   background-image: linear-gradient(to right, #FF505F , #FF7139);
   border-radius: 1rem;
-  min-height: 4rem;
+  min-height: 11vh;
+  max-width: 45vw;
   align-items: center; /* Vertical center alignment */
   justify-content: left; /* Horizontal center alignment */
 }
@@ -81,6 +82,21 @@
 .machineComments h2 {
   margin-left: 1rem;
 }
+
+.errorBTNS{
+  margin: 1vh 0 1vh 0;
+  align-items: center;
+}
+.errorBTNS button{
+  border: none;
+  margin: 1vh 2vw 1vh 2vw;
+  height: 8vh;
+  width: 15vw;
+  border-radius: 0.2rem;
+  background-image: linear-gradient(to bottom left, #FF7139, #AC71FF)
+}
+
+
 
 .porces {
   margin-top: 1rem;

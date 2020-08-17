@@ -10,17 +10,18 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  apiURl = 'http://192.168.1.116:4300' //'http://localhost:8080';
+  apiURl = 'http://192.168.30.13:4300' //'http://localhost:8080';
 
   getStatus(){
     let result = new Promise((resolve, reject) => {
       try {
         this.http.get<any>(this.apiURl + '/api/machine').subscribe((msg: any) =>{
-          resolve(msg.status)
+          if (msg.error){ resolve({msg:msg.error, isThereAnError:true});
+        } else resolve({msg:msg.status, isThereAnError:false})
       })
       } catch (error) {
         console.log(error);
-        reject(error)
+        throw error;
       }
     });
     return result;
@@ -107,5 +108,9 @@ export class HttpService {
       }
     });
     return result;
+  }
+
+  sendOrder(order){
+    return this.http.post<any>(this.apiURl + '/api/order', {order: order}).subscribe((msg: any) =>{})
   }
 }

@@ -19,6 +19,7 @@ export class InfoPanelComponent implements OnInit {
   msgTimeToProcessATag:any = "";
   isNFCConnected:any = false
   isDBConnected:any = false
+  isThereAnError = false
   async ngOnInit() {
 
   this._updateStatus();
@@ -29,7 +30,10 @@ export class InfoPanelComponent implements OnInit {
       await this._delay(300);
 
       //updates the status info
-      this._http.getStatus().then((status) =>{ this.status = status; }).catch((err) => {console.log(err);} )
+      this._http.getStatus().then((status:any) =>{
+        this.status = status.msg; //displays the status recieved on the page
+        this.isThereAnError = status.isThereAnError;
+       }).catch((err) => {this.status = err;})
 
       //updates the speed line if it makes sense to do so
       this._http.getSpeed().then((finishedTime) =>{
@@ -42,14 +46,13 @@ export class InfoPanelComponent implements OnInit {
       this._http.getNFCInfo().then((connection) => {this.isDBConnected = connection}).catch((err) => {console.log(err) })
 
       //takes care of the job info in the main panel
-      this._http.getcurrentJob().then((currentJob) =>{
+      this._http.getcurrentJob().then((currentJob:any) =>{
         if (currentJob){
           this.qtyDone = Math.min(currentJob.qtydone + 1, this.processSize);
           this.processSize = currentJob.qty
           this.jobName = currentJob.name
         }
       }).catch((err) => {console.log(err);})
-
     }
   }
 
@@ -72,5 +75,13 @@ export class InfoPanelComponent implements OnInit {
   //routes to the page to add a job to the db
   goToCreateNewJob(){
     this._router.navigate(['CreateNewJob'])
+  }
+
+  acceptTag(){
+      this._http.sendOrder("Save tag");
+  }
+
+  rejectTag(){
+      this._http.sendOrder("Reject tag");
   }
 }
