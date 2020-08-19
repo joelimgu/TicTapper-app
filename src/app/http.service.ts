@@ -10,7 +10,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  apiURl = 'http://192.168.1.41:4300' //'http://localhost:8080';
+  apiURl = 'http://192.168.30.22:4300' //'http://localhost:8080';
 
   getStatus(){
     let result = new Promise((resolve, reject) => {
